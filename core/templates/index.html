@@ -24,10 +24,12 @@
 
 <hr />
 
+{% block book-list %}
 <ul hx-trigger="book_added from:body" hx-get="{% url 'book_list' %}" hx-swap="outerHTML">
     {% for book in books %}
     <li>{{ book.name }}</li>
     {% endfor %}
 </ul>
+{% endblock %}
 
 {% endblock %}

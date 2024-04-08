@@ -29,3 +29,12 @@ def index(request):
         'form': BookForm()
     }
     return render(request, 'index.html', context)
+
+
+def book_list(request):
+    books = Book.objects.all()
+    context = {
+        'books': books
+    }
+    html = render_block_to_string('index.html', 'book-list', context)
+    return HttpResponse(html)
