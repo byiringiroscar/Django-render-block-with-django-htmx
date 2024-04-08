@@ -19,7 +19,7 @@ def index(request):
                 'form': form,
                 'books': Book.objects.all()
             }
-        html = render_block_to_string('index.htm', 'add-book-form', context)
+        html = render_block_to_string('index.html', 'add-book-form', context)
         return HttpResponse(html)
     context = {
         'books': Book.objects.all(),
