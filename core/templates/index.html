@@ -10,5 +10,12 @@
 <hr />
 
 {% include 'form.html' %}
+<hr />
+
+<ul>
+    {% for book in books %}
+    <li>{{ book.name }}</li>
+    {% endfor %}
+</ul>
 
 {% endblock %}
