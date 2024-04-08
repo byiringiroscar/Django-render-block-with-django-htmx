@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from core.models import Book
 from core.forms import BookForm
+from render_block import render_block_to_string
+from django.http import HttpResponse
 
 # Create your views here.
 def index(request):
@@ -12,12 +14,13 @@ def index(request):
                 'form': BookForm(),
                 'books': Book.objects.all()
             }
-            return render(request, 'form.html', context)
-        context = {
-            'form': form,
-            'books': Book.objects.all()
-        }
-        return render(request, 'form.html', context)
+        else:
+            context = {
+                'form': form,
+                'books': Book.objects.all()
+            }
+        html = render_block_to_string('index.htm', 'add-book-form', context)
+        return HttpResponse(html)
     context = {
         'books': Book.objects.all(),
         'form': BookForm()

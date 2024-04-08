@@ -1,8 +1,0 @@
-<div id="add-form-container">
-    <h1>Add Book</h1> 
-    <form hx-post="{% url 'index' %}" hx-target="#add-form-container" hx-swap="outerHTML">
-        {{ form.as_p }}
-
-        <input type="submit" value="Submit" />
-    </form>
-</div>
