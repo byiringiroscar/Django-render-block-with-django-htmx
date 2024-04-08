@@ -20,7 +20,10 @@ def index(request):
                 'books': Book.objects.all()
             }
         html = render_block_to_string('index.html', 'add-book-form', context)
-        return HttpResponse(html)
+        response =  HttpResponse(html)
+        if form.is_valid():
+            response['HX-Trigger'] = 'book_added'
+        return response
     context = {
         'books': Book.objects.all(),
         'form': BookForm()
