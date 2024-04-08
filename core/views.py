@@ -4,5 +4,8 @@ from core.forms import BookForm
 
 # Create your views here.
 def index(request):
-    context = {}
+    context = {
+        'books': Book.objects.all(),
+        'form': BookForm()
+    }
     return render(request, 'index.html', context)
