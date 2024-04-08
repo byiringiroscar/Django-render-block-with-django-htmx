@@ -8,6 +8,14 @@ def index(request):
         form = BookForm(request.POST)
         if form.is_valid():
             form.save()
+            context = {
+                'form': BookForm()
+            }
+            return render(request, 'form.html', context)
+        context = {
+            'form': form
+        }
+        return render(request, 'form.html', context)
     context = {
         'books': Book.objects.all(),
         'form': BookForm()
