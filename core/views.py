@@ -9,11 +9,13 @@ def index(request):
         if form.is_valid():
             form.save()
             context = {
-                'form': BookForm()
+                'form': BookForm(),
+                'books': Book.objects.all()
             }
             return render(request, 'form.html', context)
         context = {
-            'form': form
+            'form': form,
+            'books': Book.objects.all()
         }
         return render(request, 'form.html', context)
     context = {
